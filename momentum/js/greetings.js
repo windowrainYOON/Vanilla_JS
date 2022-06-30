@@ -3,11 +3,12 @@
 const loginForm = document.querySelector("#login-form");
 const loginInput = loginForm.querySelector("input");
 const loginButton = loginForm.querySelector("button");
-const greeting =document.querySelector("#greeting");
+const greeting = document.querySelector("#greeting");
 
 const HIDDEN_CLASSNAME = "hidden";
 const USERNAME_KEY = "username";
 
+const savedUsername = localStorage.getItem(USERNAME_KEY);
 
 function onLoginSubmit(event) {
   event.preventDefault(); //브라우저가 자동으로 실행하는 동작을 막음
@@ -17,12 +18,11 @@ function onLoginSubmit(event) {
 }
 
 function paintGreetings(){
-  const username = localStorage.getItem(USERNAME_KEY);
+  const savedUsername = localStorage.getItem(USERNAME_KEY);
   greeting.innerText = `Hello ${savedUsername}`;
   greeting.classList.remove(HIDDEN_CLASSNAME);
 }
 
-const savedUsername = localStorage.getItem(USERNAME_KEY);
 
 if(savedUsername === null){
   loginForm.classList.remove(HIDDEN_CLASSNAME);
